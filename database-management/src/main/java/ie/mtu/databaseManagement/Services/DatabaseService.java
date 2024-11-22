@@ -40,6 +40,9 @@ public class DatabaseService {
         BeanUtils.copyProperties(existingDatabase, updatedDatabaseCopy);
 
         // Update fields selectively, handling nulls and empty strings
+        updatedDatabaseCopy.setDatabaseName(
+                Optional.ofNullable(updatedDatabase.getDatabaseName())
+                        .orElse(updatedDatabaseCopy.getDatabaseName()));
         updatedDatabaseCopy.setDatabaseType(
                 Optional.ofNullable(updatedDatabase.getDatabaseType())
                         .orElse(updatedDatabaseCopy.getDatabaseType()));
@@ -52,9 +55,9 @@ public class DatabaseService {
         updatedDatabaseCopy.setStatus(
                 Optional.ofNullable(updatedDatabase.getStatus())
                         .orElse(updatedDatabaseCopy.getStatus()));
-        updatedDatabaseCopy.setLast_update(
-                Optional.ofNullable(updatedDatabase.getLast_update())
-                        .orElse(updatedDatabaseCopy.getLast_update()));
+        updatedDatabaseCopy.setLastUpdate(
+                Optional.ofNullable(updatedDatabase.getLastUpdate())
+                        .orElse(updatedDatabaseCopy.getLastUpdate()));
 
         //Crucially, update the databaseID. This prevents inconsistencies
         updatedDatabaseCopy.setDatabaseId(existingDatabase.getDatabaseId());
