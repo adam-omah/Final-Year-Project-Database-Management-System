@@ -29,6 +29,7 @@ class DatabaseServiceTest {
         database.setDatabaseName("testDB");
         database.setDatabaseType("PostgreSQL");
         database.setConnectionString("jdbc:postgresql://localhost:5432/mydatabase");
+        database.setUsername("John");
         database.setConnectionPassword("mysecretpassword");
         database.setStatus("ACTIVE");
 
@@ -64,7 +65,7 @@ class DatabaseServiceTest {
     @Test
     @Sql(scripts = "classpath:SQL_Scripts/test-data.sql", executionPhase = BEFORE_TEST_METHOD)
     void deleteDatabaseById() {
-        Long databaseId = 3L;
+        Long databaseId = 4L;
         assertTrue(databaseRepo.existsById(databaseId));
 
         databaseService.deleteDatabaseById(databaseId);

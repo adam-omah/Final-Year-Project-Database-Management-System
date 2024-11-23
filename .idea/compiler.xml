@@ -7,13 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="microservice-h2-test" />
         <module name="database-management" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="micro-service-tester" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="database-management" options="-parameters" />
+      <module name="micro-service-tester" options="-parameters" />
+      <module name="microservice-h2-test" options="-parameters" />
     </option>
   </component>
 </project>

@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS Database (
     database_name VARCHAR(255) NOT NULL,
     database_type VARCHAR(255) NOT NULL,
     connection_string VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL,
     connection_password VARCHAR(120) NOT NULL,
     status VARCHAR(50) NOT NULL DEFAULT 'ACTIVE',
     last_update DATE

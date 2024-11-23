@@ -5,6 +5,8 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/database-management/pom.xml" />
+        <option value="$PROJECT_DIR$/micro-service-tester/pom.xml" />
+        <option value="$PROJECT_DIR$/microservice-h2-test/pom.xml" />
       </list>
     </option>
   </component>

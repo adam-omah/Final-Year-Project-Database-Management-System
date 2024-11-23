@@ -23,6 +23,7 @@ public class Database {
     private String databaseName;
     private String databaseType;
     private String connectionString;
+    private String username;
     private String connectionPassword;
     private String status;
     private Date lastUpdate;

@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS Database (
     database_name VARCHAR(255) NOT NULL,
     database_type VARCHAR(255) NOT NULL,
     connection_string VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL,
     connection_password VARCHAR(120) NOT NULL,
     status VARCHAR(50) NOT NULL DEFAULT 'ACTIVE',
     last_update TIMESTAMP -- Using TIMESTAMP for better date/time handling
@@ -34,18 +35,18 @@ CREATE TABLE IF NOT EXISTS Replication_Connection (
 
 CREATE SEQUENCE IF NOT EXISTS Replication_Connection_SEQ START WITH 1 INCREMENT BY 1;
 
-INSERT INTO Database (database_id, database_type, database_name, connection_string, connection_password, last_update) VALUES
-    (nextval('Database_SEQ'), 'PostgreSQL', 'postgres_db', 'jdbc:postgresql://localhost:5432/mydatabase', 'mysecretpassword', CURRENT_TIMESTAMP);
+-- Insert sample data into Database table.
+INSERT INTO Database (database_id, database_type, database_name, connection_string, username, connection_password, last_update) VALUES
+    (nextval('Database_SEQ'), 'PostgreSQL', 'postgres_db', 'jdbc:postgresql://localhost:5432/mydatabase', 'postgres_user', 'mysecretpassword', CURRENT_TIMESTAMP);
 
-INSERT INTO Database (database_id, database_type, database_name, connection_string, connection_password, last_update) VALUES
-    (nextval('Database_SEQ'), 'MySQL', 'mysql_db1', 'jdbc:mysql://localhost:3306/mydatabase', 'anothersecret', CURRENT_TIMESTAMP);
+INSERT INTO Database (database_id, database_type, database_name, connection_string, username, connection_password, last_update) VALUES
+    (nextval('Database_SEQ'), 'MySQL', 'mysql_db1', 'jdbc:mysql://localhost:3306/mydatabase', 'mysql_user', 'anothersecret', CURRENT_TIMESTAMP);
 
-INSERT INTO Database (database_id, database_type, database_name, connection_string, connection_password, last_update) VALUES
-    (nextval('Database_SEQ'), 'MySQL', 'mysql_db2', 'jdbc:mysql://localhost:3306/mydatabase', 'anothersecret', CURRENT_TIMESTAMP);
+INSERT INTO Database (database_id, database_type, database_name, connection_string, username, connection_password, last_update) VALUES
+    (nextval('Database_SEQ'), 'MySQL', 'mysql_db2', 'jdbc:mysql://localhost:3306/mydatabase', 'mysql_user', 'anothersecret', CURRENT_TIMESTAMP);
 
-INSERT INTO Database (database_id, database_type, database_name, connection_string, connection_password, last_update) VALUES
-    (nextval('Database_SEQ'), 'H2', 'h2_db', 'jdbc:h2:mem:testdb', 'sa', CURRENT_TIMESTAMP);
-
+INSERT INTO Database (database_id, database_type, database_name, connection_string, username, connection_password, last_update) VALUES
+    (nextval('Database_SEQ'), 'H2', 'h2_db', 'jdbc:h2:tcp://localhost:9092/mydb', 'sa', 'sa', CURRENT_TIMESTAMP);
 
 -- Insert sample data into Replication_Connection table
 INSERT INTO Replication_Connection (connection_id, connection_name, start_database, end_database, status, start_date, last_used) VALUES

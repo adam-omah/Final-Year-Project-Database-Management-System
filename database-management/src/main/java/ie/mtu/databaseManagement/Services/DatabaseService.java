@@ -7,6 +7,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,6 +52,9 @@ public class DatabaseService {
         updatedDatabaseCopy.setConnectionString(
                 Optional.ofNullable(updatedDatabase.getConnectionString())
                         .orElse(updatedDatabaseCopy.getConnectionString()));
+        updatedDatabaseCopy.setUsername(
+                Optional.ofNullable(updatedDatabase.getUsername())
+                        .orElse(updatedDatabaseCopy.getUsername()));
         updatedDatabaseCopy.setConnectionPassword(
                 Optional.ofNullable(updatedDatabase.getConnectionPassword())
                         .orElse(updatedDatabaseCopy.getConnectionPassword()));
@@ -69,5 +75,21 @@ public class DatabaseService {
     public void deleteDatabaseById(Long databaseId)
     {
         databaseRepository.deleteById(databaseId);
+    }
+
+
+    public boolean connectToDatabase(Database database) {
+        String connectionString = database.getConnectionString();
+        String password = database.getConnectionPassword();
+        String user = database.getUsername();//add a username field to your database entity
+
+        try (Connection connection = DriverManager.getConnection(connectionString, user, password)) {
+            System.out.println("Successfully connected to the database.");
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Failed to connect to the database: " + e.getMessage());
+            e.printStackTrace();//print the stacktrace for debugging
+            return false;
+        }
     }
 }
