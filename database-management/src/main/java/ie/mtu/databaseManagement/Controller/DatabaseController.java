@@ -10,6 +10,7 @@ import java.util.List;
 // Annotation
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/databases")
 // Class
 public class DatabaseController {
 

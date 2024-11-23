@@ -12,6 +12,7 @@ CREATE SEQUENCE IF NOT EXISTS Database_SEQ START WITH 1 INCREMENT BY 1;
 
 CREATE TABLE IF NOT EXISTS Replication_Connection (
     connection_id BIGINT PRIMARY KEY,
+    connection_name varchar(255),
     start_database BIGINT,
     end_database BIGINT,
     status VARCHAR(50) NOT NULL DEFAULT 'ACTIVE',

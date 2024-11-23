@@ -21,10 +21,11 @@ CREATE SEQUENCE IF NOT EXISTS Database_SEQ START WITH 1 INCREMENT BY 1;
 
 -- Create Replication_Connection table
 CREATE TABLE IF NOT EXISTS Replication_Connection (
-                                                      connection_id BIGINT PRIMARY KEY,
-                                                      start_database BIGINT,
-                                                      end_database BIGINT,
-                                                      status VARCHAR(50) NOT NULL DEFAULT 'ACTIVE',
+    connection_id BIGINT PRIMARY KEY,
+    connection_name varchar(255),
+    start_database BIGINT,
+    end_database BIGINT,
+    status VARCHAR(50) NOT NULL DEFAULT 'ACTIVE',
     start_date TIMESTAMP,
     last_used TIMESTAMP,
     FOREIGN KEY (start_database) REFERENCES Database(database_id),
@@ -42,6 +43,13 @@ INSERT INTO Database (database_id, database_type, database_name, connection_stri
 INSERT INTO Database (database_id, database_type, database_name, connection_string, connection_password, last_update) VALUES
     (nextval('Database_SEQ'), 'MySQL', 'mysql_db2', 'jdbc:mysql://localhost:3306/mydatabase', 'anothersecret', CURRENT_TIMESTAMP);
 
-
 INSERT INTO Database (database_id, database_type, database_name, connection_string, connection_password, last_update) VALUES
     (nextval('Database_SEQ'), 'H2', 'h2_db', 'jdbc:h2:mem:testdb', 'sa', CURRENT_TIMESTAMP);
+
+
+-- Insert sample data into Replication_Connection table
+INSERT INTO Replication_Connection (connection_id, connection_name, start_database, end_database, status, start_date, last_used) VALUES
+    (nextval('Replication_Connection_SEQ'), 'Connection 1', 1, 2, 'ACTIVE', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO Replication_Connection (connection_id, connection_name, start_database, end_database, status, start_date, last_used) VALUES
+    (nextval('Replication_Connection_SEQ'), 'Connection 2', 2, 3, 'INACTIVE', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
