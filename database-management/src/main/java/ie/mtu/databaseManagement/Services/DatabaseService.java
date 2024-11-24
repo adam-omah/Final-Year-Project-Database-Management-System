@@ -78,18 +78,18 @@ public class DatabaseService {
     }
 
 
-    public boolean connectToDatabase(Database database) {
+    public String connectToDatabase(Database database) {
         String connectionString = database.getConnectionString();
         String password = database.getConnectionPassword();
         String user = database.getUsername();//add a username field to your database entity
 
         try (Connection connection = DriverManager.getConnection(connectionString, user, password)) {
             System.out.println("Successfully connected to the database.");
-            return true;
+            return "Successfully connected to the database.";
         } catch (SQLException e) {
             System.err.println("Failed to connect to the database: " + e.getMessage());
             e.printStackTrace();//print the stacktrace for debugging
-            return false;
+            return "Failed to connect to the database";
         }
     }
 }
