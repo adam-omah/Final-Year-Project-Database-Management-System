@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="microservice-h2-test" />
         <module name="database-management" />
+        <module name="microservice-h2-server-test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -19,6 +20,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="database-management" options="-parameters" />
       <module name="micro-service-tester" options="-parameters" />
+      <module name="microservice-h2-server-test" options="-parameters" />
       <module name="microservice-h2-test" options="-parameters" />
     </option>
   </component>
