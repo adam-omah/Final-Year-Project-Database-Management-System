@@ -19,7 +19,7 @@ public class DatabaseConnectionTest {
     private DatabaseRepo databaseRepo;
 
 
-    // This test can only be run when the Test Microservices h2 database is running.
+    // This test can only be run when the Test Microservices h2 database is running. Shows the failing To connect.
 //    @Test
 //    public void testConnectToH2Database(){
 //        Database database = new Database();
@@ -32,10 +32,13 @@ public class DatabaseConnectionTest {
 //        assertEquals("Successfully connected to the database.", result);
 //    }
 
+
+    // This test can only be run when the Test Microservices h2 database Server is running.
+    //
     @Test
-    void testConnectToH2Database2() {
+    void testConnectToH2DatabaseServer() {
         String databaseName = "data/properties";
-        String jdbcUrl = "jdbc:h2:file:/data/properties";
+        String jdbcUrl = "jdbc:h2:tcp://localhost:9093/mem:mydb";
 
         Database database = new Database();
         database.setConnectionString(jdbcUrl);
