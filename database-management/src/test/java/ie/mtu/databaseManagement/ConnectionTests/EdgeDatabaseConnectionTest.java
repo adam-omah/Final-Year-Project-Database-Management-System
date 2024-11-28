@@ -1,40 +1,23 @@
-package ie.mtu.databaseManagement.Services;
+package ie.mtu.databaseManagement.ConnectionTests;
 
 import ie.mtu.databaseManagement.Entities.Database;
 import ie.mtu.databaseManagement.Repositories.DatabaseRepo;
+import ie.mtu.databaseManagement.Services.DatabaseService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.jdbc.Sql;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.BEFORE_TEST_METHOD;
 
 @SpringBootTest
-public class DatabaseConnectionTest {
+public class EdgeDatabaseConnectionTest {
     @Autowired
     private DatabaseService databaseService;
     @Autowired
     private DatabaseRepo databaseRepo;
 
-
-    // This test can only be run when the Test Microservices h2 database is running. Shows the failing To connect.
-//    @Test
-//    public void testConnectToH2Database(){
-//        Database database = new Database();
-//        database.setConnectionString("jdbc:h2:tcp://localhost:8084/data/properties");
-//        database.setUsername("sa");
-//        database.setConnectionPassword("password");
-//        String result = databaseService.connectToDatabase(database);
-//
-//        // Assert the connection result
-//        assertEquals("Successfully connected to the database.", result);
-//    }
-
-
     // This test can only be run when the Test Microservices h2 database Server is running.
-    //
     @Test
     void testConnectToH2DatabaseServer() {
         String databaseName = "data/properties";
