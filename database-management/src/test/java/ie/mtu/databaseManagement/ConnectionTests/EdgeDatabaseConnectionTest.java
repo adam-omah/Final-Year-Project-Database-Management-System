@@ -21,7 +21,7 @@ public class EdgeDatabaseConnectionTest {
     @Test
     public void testConnectToH2Database(){
         Database database = new Database();
-        database.setConnectionString("jdbc:h2:tcp://localhost:8084/data/properties");
+        database.setConnectionString("jdbc:h2:file:/data/properties");
         database.setUsername("sa");
         database.setConnectionPassword("password");
         String result = databaseService.connectToDatabase(database);
