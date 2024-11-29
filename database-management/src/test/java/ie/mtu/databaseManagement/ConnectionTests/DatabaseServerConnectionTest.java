@@ -17,9 +17,6 @@ public class DatabaseServerConnectionTest {
     @Autowired
     private DatabaseRepo databaseRepo;
 
-
-
-
     // This test can only be run when the Test Microservices h2 database Server is running.
     @Test
     void testConnectToH2DatabaseServer() {
