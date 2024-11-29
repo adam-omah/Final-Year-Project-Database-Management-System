@@ -31,7 +31,6 @@ public class EdgeDatabaseConnectionTest {
         try {
             String result = databaseService.connectToDatabase(database);
             assertEquals("Successfully connected to the database.", result);
-            // ... rest of your test
         } catch (Exception e) {
             System.err.println("Test failed with error: " + e.getMessage());
             e.printStackTrace(); // Print the full stack trace for debugging
