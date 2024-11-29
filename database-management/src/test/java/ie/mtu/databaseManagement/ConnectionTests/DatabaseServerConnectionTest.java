@@ -24,7 +24,7 @@ public class DatabaseServerConnectionTest {
     @Test
     void testConnectToH2DatabaseServer() {
         String databaseName = "data/properties";
-        String jdbcUrl = "jdbc:h2:tcp://localhost:9093/mem:mydb";
+        String jdbcUrl = "jdbc:h2:tcp://localhost:9093/file:/data/properties";
 
         Database database = new Database();
         database.setConnectionString(jdbcUrl);
