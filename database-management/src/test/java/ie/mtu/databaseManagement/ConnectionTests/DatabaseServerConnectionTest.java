@@ -18,18 +18,27 @@ public class DatabaseServerConnectionTest {
     private DatabaseRepo databaseRepo;
 
 
-    // This test can only be run when the Test Microservices h2 database is running. Shows the failing To connect.
+
+
+    // This test can only be run when the Test Microservices h2 database Server is running.
     @Test
-    public void testConnectToH2Database(){
+    void testConnectToH2DatabaseServer() {
+        String databaseName = "data/properties";
+        String jdbcUrl = "jdbc:h2:tcp://localhost:9093/mem:mydb";
+
         Database database = new Database();
-        database.setConnectionString("jdbc:h2:tcp://localhost:8084/data/properties");
+        database.setConnectionString(jdbcUrl);
         database.setUsername("sa");
         database.setConnectionPassword("password");
-        String result = databaseService.connectToDatabase(database);
 
-        // Assert the connection result
-        assertEquals("Successfully connected to the database.", result);
+        try {
+            String result = databaseService.connectToDatabase(database);
+            assertEquals("Successfully connected to the database.", result);
+        } catch (Exception e) {
+            System.err.println("Test failed with error: " + e.getMessage());
+            e.printStackTrace(); // Print the full stack trace for debugging
+            fail("Database connection failed: " + e.getMessage()); // JUnit failure
+        }
     }
-
 
 }
